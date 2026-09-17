@@ -1,0 +1,376 @@
+:root {
+  color-scheme: dark;
+  --bg: #101722;
+  --panel: #18212e;
+  --line: #2b3747;
+  --muted: #9aa9bc;
+  --accent: #f0bb70;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: #edf2f8;
+  font:
+    15px/1.6 "Segoe UI",
+    sans-serif;
+}
+header {
+  height: 84px;
+  padding: 0 5vw;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  gap: 15px;
+  font-size: 20px;
+  font-weight: 750;
+  letter-spacing: 1px;
+}
+.brand:first-letter {
+  color: var(--accent);
+}
+.thin {
+  font-weight: 350;
+  color: var(--muted);
+}
+.pill,
+.badge {
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  font: 10px monospace;
+  letter-spacing: 1px;
+  padding: 8px 12px;
+}
+.pill i {
+  display: inline-block;
+  background: #88d9af;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+main {
+  max-width: 1450px;
+  margin: auto;
+  padding: 45px 5vw 20px;
+}
+.intro {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.eyebrow,
+label {
+  font: 10px/1.6 monospace;
+  letter-spacing: 1.6px;
+  color: var(--muted);
+}
+h1 {
+  font-size: clamp(40px, 4.5vw, 66px);
+  letter-spacing: -3px;
+  line-height: 1.08;
+  font-weight: 550;
+  margin: 18px 0;
+}
+h1 em {
+  color: var(--accent);
+  font-style: normal;
+}
+.lede {
+  max-width: 620px;
+  color: var(--muted);
+  font-size: 16px;
+}
+.pipeline {
+  border-left: 1px solid var(--line);
+  padding: 8px 0 8px 30px;
+  display: grid;
+  gap: 24px;
+}
+.pipeline span {
+  color: var(--accent);
+  font: 12px monospace;
+}
+.pipeline b {
+  font:
+    17px "Segoe UI",
+    sans-serif;
+  margin-left: 16px;
+  color: #edf2f8;
+}
+.pipeline small {
+  display: block;
+  margin: 8px 0 0 33px;
+  color: var(--muted);
+}
+.toolbar {
+  display: flex;
+  align-items: end;
+  gap: 14px;
+  padding: 22px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.toolbar label {
+  display: block;
+}
+.toolbar select {
+  min-width: 230px;
+  margin-top: 8px;
+}
+select,
+input,
+textarea {
+  background: #101722;
+  border: 1px solid #394656;
+  border-radius: 6px;
+  color: #edf2f8;
+  padding: 11px;
+  font:
+    14px "Segoe UI",
+    sans-serif;
+  max-width: 100%;
+}
+button,
+.upload {
+  border: 0;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #1e2330;
+  padding: 13px 18px;
+  font:
+    600 13px "Segoe UI",
+    sans-serif;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+.upload {
+  background: transparent;
+  color: #edf2f8;
+  border: 1px solid #4c596c;
+  position: relative;
+  overflow: hidden;
+}
+.upload input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+}
+.hint {
+  color: var(--muted);
+  font-size: 12px;
+}
+.toolbar .hint {
+  padding-bottom: 12px;
+}
+#message {
+  color: var(--accent);
+  min-height: 24px;
+  font-size: 13px;
+}
+.workspace,
+.bottom {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 20px;
+}
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  overflow: hidden;
+}
+.panelhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+  gap: 10px;
+}
+h2 {
+  font-size: 18px;
+  font-weight: 550;
+  margin: 3px 0;
+}
+.canvas {
+  min-height: 540px;
+  padding: 25px;
+  background: repeating-linear-gradient(
+    90deg,
+    #121a26 0,
+    #121a26 23px,
+    #192130 24px
+  );
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.empty {
+  margin: auto;
+  text-align: center;
+  color: var(--muted);
+}
+.empty > span {
+  font-size: 70px;
+  color: var(--accent);
+}
+.canvas svg {
+  width: 100%;
+  max-height: 740px;
+  background: white;
+}
+.canvas polygon {
+  fill: #efb86620;
+  stroke: #e69723;
+  stroke-width: 3;
+  opacity: 0;
+}
+.canvas polygon.active {
+  opacity: 1;
+  fill: #ffc36a44;
+  stroke-width: 5;
+}
+.review {
+  padding: 22px;
+}
+.field {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 10px;
+  margin-bottom: 15px;
+}
+.field label {
+  grid-column: 1 / -1;
+}
+.field input {
+  width: 100%;
+}
+.source {
+  font: 10px monospace;
+  background: #273346;
+  color: var(--accent);
+  padding: 10px;
+}
+.checks {
+  border: 1px solid #b08643;
+  background: #bd8c2510;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 18px;
+  font-size: 12px;
+  color: #efc990;
+}
+.checks.good {
+  border-color: #428c70;
+  color: #91dfb7;
+}
+.review textarea {
+  width: 100%;
+  resize: vertical;
+  margin: 8px 0;
+}
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.secondary {
+  background: #2b394d;
+  color: white;
+}
+.actions a {
+  color: var(--accent);
+  padding: 8px;
+}
+.bottom {
+  margin-top: 20px;
+}
+.event {
+  border-left: 2px solid #5b6d84;
+  padding: 0 0 16px 16px;
+  margin-top: 10px;
+}
+.event b {
+  color: var(--accent);
+}
+.event pre {
+  white-space: pre-wrap;
+  font: 11px monospace;
+  color: #bac4d2;
+}
+.review p:first-child {
+  margin-top: 0;
+}
+#history {
+  width: 100%;
+  margin-top: 8px;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+  color: var(--muted);
+  font: 10px monospace;
+  gap: 15px;
+}
+a {
+  color: var(--accent);
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+@media (max-width: 800px) {
+  header {
+    height: 65px;
+  }
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .pipeline {
+    display: none;
+  }
+  .workspace,
+  .bottom {
+    grid-template-columns: 1fr;
+  }
+  .toolbar {
+    flex-wrap: wrap;
+  }
+  .toolbar .hint {
+    display: none;
+  }
+  .canvas {
+    min-height: 300px;
+  }
+  main {
+    padding-top: 25px;
+  }
+  footer {
+    flex-direction: column;
+  }
+  h1 {
+    letter-spacing: -2px;
+  }
+  .pill {
+    font-size: 8px;
+  }
+}

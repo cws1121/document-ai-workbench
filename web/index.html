@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Document AI Workbench</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/"
+        >◈ <span>DOCUMENT<span class="thin"> / AI</span></span></a
+      ><span class="pill">LOCAL INFERENCE <i></i></span>
+    </header>
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">01 / APPLIED AI · DOCUMENT INTELLIGENCE</p>
+          <h1>From pixels.<br />To <em>trusted data.</em></h1>
+          <p class="lede">
+            An evidence-first extraction lab. Read a document with neural OCR,
+            inspect every source, and put a human in the approval loop.
+          </p>
+        </div>
+        <aside class="pipeline">
+          <span>01 <b>Neural OCR</b><small>RapidOCR · ONNX · CPU</small></span
+          ><span
+            >02 <b>Extract + validate</b
+            ><small>Traceable rules · exact decimal checks</small></span
+          ><span
+            >03 <b>Human review</b
+            ><small>Corrections · revisions · audit history</small></span
+          >
+        </aside>
+      </section>
+      <section class="toolbar">
+        <div>
+          <label for="sample">START WITH A FICTIONAL INVOICE</label
+          ><select id="sample">
+            <option value="clean">Clean invoice</option>
+            <option value="mismatch">Arithmetic mismatch</option>
+            <option value="soft-scan">Soft scan</option>
+          </select>
+        </div>
+        <button id="run">Run extraction ↗</button
+        ><label class="upload"
+          >Upload image<input
+            id="upload"
+            type="file"
+            accept="image/png,image/jpeg,image/webp" /></label
+        ><span class="hint">PNG / JPG / WebP · 8 MB</span>
+      </section>
+      <p id="message" role="status" aria-live="polite">
+        Choose a sample to run real local OCR. The first extraction loads the
+        model.
+      </p>
+      <section class="workspace">
+        <article class="panel">
+          <div class="panelhead">
+            <div>
+              <span class="eyebrow">SOURCE DOCUMENT</span>
+              <h2>Follow the evidence</h2>
+            </div>
+            <span id="linecount" class="badge">Ready</span>
+          </div>
+          <div id="canvas" class="canvas">
+            <div class="empty">
+              <span>⌗</span>
+              <h3>Your document, decoded.</h3>
+              <p>
+                Source regions appear here after extraction.<br />Select a field
+                to see where it came from.
+              </p>
+            </div>
+          </div>
+        </article>
+        <article class="panel">
+          <div class="panelhead">
+            <div>
+              <span class="eyebrow">STRUCTURED OUTPUT</span>
+              <h2>Review before trust</h2>
+            </div>
+            <span id="status" class="badge">No document</span>
+          </div>
+          <div id="review" class="review">
+            <p class="hint">
+              Seven invoice fields, each linked to the original OCR line.
+              Missing fields stay empty.
+            </p>
+          </div>
+        </article>
+      </section>
+      <section class="bottom">
+        <article class="panel">
+          <div class="panelhead">
+            <h2>Review history</h2>
+            <span class="eyebrow">SQLITE · PERSISTED</span>
+          </div>
+          <div id="audit" class="review hint">
+            Every saved correction records a before/after diff.
+          </div>
+        </article>
+        <article class="panel">
+          <div class="panelhead"><h2>Try the failure case</h2></div>
+          <div class="review">
+            <p>
+              The mismatch sample reads <b>219.00</b>, but its components add up
+              to <b>214.00</b>. OCR can be accurate while a document is
+              inconsistent.
+            </p>
+            <p class="hint">
+              This lab uses neural OCR and constrained extraction rules, not an
+              LLM. OCR scores are model scores, not calibrated correctness
+              probabilities.
+            </p>
+            <label for="history">REOPEN A LOCAL DOCUMENT</label
+            ><select id="history">
+              <option value="">Select saved document…</option>
+            </select>
+          </div>
+        </article>
+      </section>
+      <footer>
+        BUILT TO INSPECT, NOT JUST IMPRESS
+        <span
+          >Synthetic samples · No external AI API ·
+          <a href="/docs">API docs ↗</a></span
+        >
+      </footer>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
