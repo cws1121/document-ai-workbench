@@ -4,6 +4,21 @@
 
 An applied AI engineering portfolio project by Nemanja Stancic. Built for a five-minute walkthrough: run an invoice, inspect the evidence, catch an inconsistency, correct it, and export an auditable result.
 
+**Python · FastAPI · ONNX Runtime · RapidOCR · SQLite · Vanilla JavaScript**
+
+[Run the demo](#run-locally) · [Five-minute walkthrough](#try-this-walkthrough) · [Architecture](#what-is-actually-ai) · [Evaluation](#tests-and-evaluation)
+
+## Reviewer snapshot
+
+| Engineering question | What this project demonstrates |
+|---|---|
+| Where did an extracted value come from? | Each field links to an OCR line and its image bounding box. |
+| How are wrong outputs handled? | Missing fields remain empty; exact decimal checks catch inconsistent totals. |
+| Can a reviewer correct the result safely? | SQLite transactions, revision checks, before/after changes and approval notes. |
+| What has been measured? | Six unit/API tests pass. Real OCR: 7/7 fields on clean and inconsistent invoices, 5/7 on the degraded scan. |
+
+The three-image evaluation is a small synthetic regression fixture, not an accuracy claim for arbitrary invoices. The missing invoice number and lost supplier spaces in the degraded scan are retained in the reported results.
+
 ## Run locally
 
 Install **Python 3.12** and run from this directory:
@@ -101,3 +116,8 @@ Roles differ in seniority; this project demonstrates a slice of their engineerin
 - [RapidOCR project and model ecosystem](https://github.com/RapidAI/RapidOCR)
 - [FastAPI documentation](https://fastapi.tiangolo.com/)
 - `rapidocr-onnxruntime` and bundled model components retain their upstream licenses. No model binaries are copied into this repo.
+
+## Related portfolio projects
+
+- [PatchProof](https://github.com/cws1121/patchproof): coding-agent evaluation, patch verification and approval.
+- [ML Drift Control Room](https://github.com/cws1121/ml-drift-control-room): model monitoring, retraining and gated local promotion.
